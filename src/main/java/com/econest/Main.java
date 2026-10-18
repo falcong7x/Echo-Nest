@@ -17,7 +17,6 @@ import javax.swing.SwingUtilities;
 
 /**
  * Application entry point. Each team member adds their own tab here
- * (create DAO -> service -> panel -> controller, then tabs.addTab(...)).
  */
 public class Main {
 
@@ -25,7 +24,7 @@ public class Main {
         DatabaseConnection.initialize();
 
         SwingUtilities.invokeLater(() -> {
-            FlatDarkLaf.setup();   // dark theme, must run before any component is created
+            FlatDarkLaf.setup();   // dark theme must run before anything cause eyes are getting cooked
 
             JTabbedPane tabs = new JTabbedPane();
 
@@ -37,7 +36,7 @@ public class Main {
             new ClientController(clientPanel, new ClientService(new ClientDAOImpl()));
             tabs.addTab("Clients", clientPanel);
 
-            // TODO (teammates): tabs.addTab("Inventory", ...), "Orders", "Delivery", "Reports"
+            // TODO (teammates): tabs.addTab("Inventory", and ohers like here), "Orders", "Delivery", "Reports"
 
             JFrame frame = new JFrame("EcoNest");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
