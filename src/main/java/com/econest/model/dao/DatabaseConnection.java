@@ -17,7 +17,7 @@ import java.sql.Statement;
 public final class DatabaseConnection {
 
     private static final String URL = "jdbc:sqlite:econest.db?foreign_keys=on";
-    private static final String[] SQL_FILES = {"/sql/product.sql", "/sql/client.sql"};
+    private static final String[] SQL_FILES = {"/sql/product.sql", "/sql/client.sql", "/sql/sales_inventory.sql"};
 
     private DatabaseConnection() {
     }

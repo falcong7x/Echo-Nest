@@ -30,6 +30,11 @@ public class ProductDAOImpl implements ProductDAO {
             try (ResultSet keys = ps.getGeneratedKeys()) {
                 int id = keys.next() ? keys.getInt(1) : -1;
                 p.setId(id);
+                try (PreparedStatement inventory = c.prepareStatement(
+                        "INSERT OR IGNORE INTO inventory(product_id, quantity, reorder_level) VALUES(?,0,5)")) {
+                    inventory.setInt(1, id);
+                    inventory.executeUpdate();
+                }
                 return id;
             }
         } catch (SQLException e) {
